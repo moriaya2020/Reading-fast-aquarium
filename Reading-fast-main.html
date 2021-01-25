@@ -49,44 +49,9 @@
   var scroll_area = document.getElementById("scroll_area");
   var height = 0;
   var margin_top = 0;
-  var fish_1_position = 0;
-
-  function kettei() {
-    document.getElementById("text").innerText = resource.value;
-    $("#play").removeClass("hide");
-    $("#prepare").addClass("hide");
-  }
-
-  function scrollPage() {
-    clearTimeout(scrollSTOP);
-    clearTimeout(Reducing);
-    scroll_area.scrollTo(0, y++);
-    if (y > 0) { scroll = setTimeout("scrollPage()", itv); }
-  }
-
-  function Reducing_water() {
-    margin_top = margin_top + 1;
-    height = 100 - margin_top;
-    $("svg").css("margin-top", margin_top + "%");
-    $("svg").css("height", height + "%");
-    Reducing = setTimeout("Reducing_water()", 1000);
-  }
-
-  function scrollSTOP() {
-    clearTimeout(scroll);
-    Reducing = setTimeout("Reducing_water()", 1000);
-  }
-
-  $('#wave').wavify({
-    height: 0,
-    bones: 80,
-    amplitude: 3,
-    color: '#0bd',
-    speed: .25,
-    phase: -90,
-    grid: true
-  });
-
+  var fish_1 = document.getElementById("fish_1");
+  var fish_2 = document.getElementById("fish_2");
+  
   var fish_1 = gsap.timeline();
   fish_1.to("#fish_1", 1, { rotationY: 180 })
     .to("#fish_1", 2, { x: window.innerWidth - 150 })
@@ -149,6 +114,46 @@
     .to("#fish_2_2", 1, { rotationY: 360 })
     .to("#fish_2_2", 2, { x: 0 });
   fish_2_2.repeat(-1);
+
+  function kettei() {
+    document.getElementById("text").innerText = resource.value;
+    $("#play").removeClass("hide");
+    $("#prepare").addClass("hide");
+  }
+
+  function scrollPage() {
+    clearTimeout(scrollSTOP);
+    clearTimeout(Reducing);
+    scroll_area.scrollTo(0, y++);
+    if (y > 0) { scroll = setTimeout("scrollPage()", itv); }
+  }
+
+  function Reducing_water() {
+    console.log(window.innerWidth)
+    margin_top = margin_top + 1;
+    height = 100 - margin_top;
+    $("svg").css("margin-top", margin_top + "%");
+    $("svg").css("height", height + "%");
+    if (margin_top > 10) {
+      fish_1.to("#fish_1", 10, { rotationX: 130 })
+        .to("#fish_1", 20, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 150, x: window.innerWidth / 2 })
+    }
+    Reducing = setTimeout("Reducing_water()", 1000);
+  }
+
+  function scrollSTOP() {
+    clearTimeout(scroll);
+    Reducing = setTimeout("Reducing_water()", 1000);
+  }
+
+  $('#wave').wavify({
+    height: 0,
+    bones: 80,
+    amplitude: 3,
+    color: '#0bd',
+    speed: .25,
+    phase: -90,
+  });
 
 </script>
 
@@ -238,10 +243,10 @@
   svg {
     position: absolute;
     margin-top: 0vh;
-    margin-bottom: 0vh;
+    bottom: 0;
     height: 100%;
     width: 100%;
-    top: 0;
+    bottom: 0;
     left: - 5;
     z-index: -2;
   }
