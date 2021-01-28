@@ -9,6 +9,7 @@ var margin_top = 0; //波の上側のマージン(画面の上端からの距離
 var scroll_stop_boolean = false; //スクロール停止中か否か(スクロール停止中：true)
 var fish_die_sound = document.getElementById("fish_die_sound"); //魚が死んだ時の効果音
 var btn_sound = document.getElementById("btn_sound"); //ボタンが押された時の効果音
+var sea_sound = document.getElementById("sea_sound"); //海の効果音
 var botan = document.querySelectorAll(".botan"); //ボタン
 var fa_undo = document.querySelector(".fa-undo"); //やり直しボタン
 var fish_1_die = false; //[初期の段階で1番上にいる魚]は死んだか否か(死んだ：true)
@@ -21,9 +22,21 @@ var fish_1_2_die = false; //[初期の段階で上から7番目にいる魚]は�
 var fish_4_2_die = false; //[初期の段階で上から8番目にいる魚]は死んだか否か(死んだ：true)
 var fish_2_2_die = false; //[初期の段階で上から9番目にいる魚]は死んだか否か(死んだ：true)
 
+// ↓ウィンドウを読み込んだ際に、音を鳴らすことはできなかった。Safariではできたが。。。
+//調べたところ、ユーザーの配慮のため、数年前からそうなったということだった。
+// window.onload = function(){
+//   sea_sound.play();
+// }
+
+//ミュートにする
+sea_sound.muted = true;
+fish_die_sound.muted = true;
+btn_sound.muted = true;
+
 //ミュートに切り替えるボタンを押した時
-fa_volume_up.addEventListener('click', function(){
+fa_volume_up.addEventListener('click', function () {
   //ミュートにする
+  sea_sound.muted = true;
   fish_die_sound.muted = true;
   btn_sound.muted = true;
   //表示の切り替え(ミュート　⇄　ミュート解除)
@@ -34,8 +47,9 @@ fa_volume_up.addEventListener('click', function(){
 });
 
 //ミュート解除に切り替えるボタンを押した時
-fa_volume_mute.addEventListener('click', function(){
+fa_volume_mute.addEventListener('click', function () {
   //ミュート解除
+  sea_sound.muted = false;
   fish_die_sound.muted = false;
   btn_sound.muted = false;
   //表示の切り替え(ミュート　⇄　ミュート解除)
@@ -43,6 +57,7 @@ fa_volume_mute.addEventListener('click', function(){
   $(".fa-volume-up").addClass("active");
   $(".fa-volume-mute").removeClass("active");
   $(".fa-volume-mute").addClass("passive");
+  sea_sound.play();
 });
 
 //[初期の段階で1番上にいる魚]の泳ぎ
@@ -136,7 +151,7 @@ botan[2].addEventListener('click', function () {
 })
 
 //やり直しボタンを押した時
-fa_undo.addEventListener('click', function(){
+fa_undo.addEventListener('click', function () {
   location.reload();
 })
 
@@ -144,6 +159,8 @@ fa_undo.addEventListener('click', function(){
  * 決定ボタンを押した際に発火する関数
  */
 function kettei() {
+  //ミュートにする
+  sea_sound.muted = true;
   //入力されたテキストを読む文章に設定
   document.getElementById("text").innerText = resource.value;
   //表示の切り替え(レベル選択・文章入力画面　⇄　文章を読む画面)

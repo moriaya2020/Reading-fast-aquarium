@@ -109,10 +109,12 @@ svg {
 }
 /* 表示をオンにするクラス */
 .active{
+  /* !importantはfontawesomeにおけるクラスの優先度を強制的に変えるために付けた */
   display: block !important; 
 }
 /* 表示をオフにするクラス */
 .passive{
+  /* !importantはfontawesomeにおけるクラスの優先度を強制的に変えるために付けた */
   display: none !important;
 }
 /* タイトルと注の表示 */
