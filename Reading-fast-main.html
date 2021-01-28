@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>速読み水族館</title>
   <link href="https://fonts.googleapis.com/earlyaccess/hannari.css" rel="stylesheet">
 </head>
 
@@ -275,14 +275,21 @@
   var scroll_stop_boolean = false;
   var  fish_die = document.getElementById("fish_die"); 
   var fish_1_die = false;
+  var fish_2_die = false;
+  var fish_3_die = false;
+  var fish_4_die = false;
+  var fish_5_die = false;
+  var fish_6_die = false;
+  var fish_1_2_die = false;
+  var fish_4_2_die = false;
+  var fish_2_2_die = false;
 
   var fish_1 = gsap.timeline();
   fish_1.to("#fish_1", 1, { rotationY: 180 })
     .to("#fish_1", 2, { x: window.innerWidth - 150 })
     .to("#fish_1", 1, { rotationY: 360 })
     .to("#fish_1", 2, { x: 0 });
-  fish_1.repeat(-1);
-
+    fish_1.repeat(-1);
   var fish_2 = gsap.timeline();
   fish_2.to("#fish_2", 1, { rotationY: 180 })
     .to("#fish_2", 2, { x: window.innerWidth - 150 })
@@ -351,7 +358,6 @@
         level = levels[i].value;
       }
     }
-    console.log(level)
   }
 
   function scrollPage() {
@@ -375,45 +381,80 @@
     $("svg").css("height", height + "%");
 
     if (margin_top > 90) {
-      fish_2_2.to("#fish_2_2", 10, { rotationX: 130 })
-        .to("#fish_2_2", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 800, x: window.innerWidth / 5 })
-      fish_2_2.staggerTo("#fish2_2", 1, {
-        onUpdate: function () {
-          $("#fish2_2").fadeOut("slow");
-        }
-      }, 1)
+      var fish_2_2 = gsap.timeline();
+      fish_2_2.to("#fish_2_2",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_2_2_die == false){
+            fish_die.play();
+          }
+          fish_2_2_die = true;
+        }})
     }
     if (margin_top > 80) {
-      fish_4_2.to("#fish_4_2", 10, { rotationX: 130 })
-        .to("#fish_4_2", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 730, x: window.innerWidth / 9 })
+      var fish_4_2 = gsap.timeline();
+      fish_4_2.to("#fish_4_2",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_4_2_die == false){
+            fish_die.play();
+          }
+          fish_4_2_die = true;
+        }})
     }
     if (margin_top > 70) {
-      fish_1_2.to("#fish_1_2", 10, { rotationX: 130 })
-        .to("#fish_1_2", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 660, x: window.innerWidth / 10 })
+      var fish_1_2 = gsap.timeline();
+      fish_1_2.to("#fish_1_2",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_1_2_die == false){
+            fish_die.play();
+          }
+          fish_1_2_die = true;
+        }})
     }
     if (margin_top > 60) {
-      fish_6.to("#fish_6", 10, { rotationX: 130 })
-        .to("#fish_6", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 570, x: window.innerWidth / 3 })
+      var fish_6 = gsap.timeline();
+      fish_6.to("#fish_6",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_6_die == false){
+            fish_die.play();
+          }
+          fish_6_die = true;
+        }})
     }
     if (margin_top > 50) {
-      fish_5.to("#fish_5", 10, { rotationX: 130 })
-        .to("#fish_5", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 500, x: window.innerWidth / 7 })
+      var fish_5 = gsap.timeline();
+      fish_5.to("#fish_5",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_5_die == false){
+            fish_die.play();
+          }
+          fish_5_die = true;
+        }})
     }
     if (margin_top > 40) {
-      fish_4.to("#fish_4", 10, { rotationX: 130 })
-        .to("#fish_4", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 430, x: window.innerWidth / 5 })
+      var fish_4 = gsap.timeline();
+      fish_4.to("#fish_4",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_4_die == false){
+            fish_die.play();
+          }
+          fish_4_die = true;
+        }})
     }
     if (margin_top > 30) {
-      fish_3.to("#fish_3", 10, { rotationX: 130 })
-        .to("#fish_3", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 350, x: window.innerWidth / 6 })
+      var fish_3 = gsap.timeline();
+      fish_3.to("#fish_3",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_3_die == false){
+            fish_die.play();
+          }
+          fish_3_die = true;
+        }})
     }
     if (margin_top > 20) {
-      fish_2.to("#fish_2", 10, { rotationX: 130 })
-        .to("#fish_2", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 250, x: window.innerWidth / 4 })
+      var fish_2 = gsap.timeline();
+      fish_2.to("#fish_2",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
+          if(fish_2_die == false){
+            fish_die.play();
+          }
+          fish_2_die = true;
+        }})
     }
     if (margin_top > 10) {
-      fish_1.to("#fish_1", 10, { rotationX: 130 })
-        .to("#fish_1", 25, { duration: 100, ease: Bounce.easeOut, y: window.innerHeight - 150, x: window.innerWidth / 2 ,onUpdate:function(){
+      var fish_1 = gsap.timeline();
+      fish_1.to("#fish_1",1,{autoAlpha:0,rotationX: 90,onUpdate:function(){
           if(fish_1_die == false){
             fish_die.play();
           }
