@@ -1,0 +1,196 @@
+/* 初期の段階で1番上にいる魚 */
+#fish_1 {
+  position: absolute;
+  top: 10%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から2番目にいる魚 */
+#fish_2 {
+  position: absolute;
+  top: 20%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から3番目にいる魚 */
+#fish_3 {
+  position: absolute;
+  top: 30%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から4番目にいる魚 */
+#fish_4 {
+  position: absolute;
+  top: 40%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から5番目にいる魚 */
+#fish_5 {
+  position: absolute;
+  top: 50%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から6番目にいる魚 */
+#fish_6 {
+  position: absolute;
+  top: 60%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から7番目にいる魚 */
+#fish_1_2 {
+  position: absolute;
+  top: 70%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から8番目にいる魚 */
+#fish_4_2 {
+  position: absolute;
+  top: 80%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* 初期の段階で上から9番目にいる魚 */
+#fish_2_2 {
+  position: absolute;
+  top: 90%;
+  width: 150px;
+  height: auto;
+  transform: scale(1, 1);
+  z-index: -1;
+}
+/* GSAP(アニメーションライブラリ)に関与する要素 */
+svg {
+  position: absolute;
+  margin-top: 0vh;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  left: - 5;
+  z-index: -2;
+}
+/* 表示をオンにするクラス */
+.active{
+  display: block;
+}
+/* 表示をオフにするクラス */
+.passive{
+  display: none;
+}
+/* タイトルと注の表示 */
+.phrase {
+  color: black;
+  font-family: "Hannari";
+}
+/* 読む文章を入力する欄 */
+#resource {
+  background-color: rgba(256, 256, 256, 0.6);
+  width: 500px;
+  height: 200px;
+  border: 8px solid;
+  resize: none;
+}
+/* 決定ボタン */
+.kettei{
+  margin-left: 415px;
+  width: 100px;
+  height: 60px;
+  color:white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 5px solid black;
+  outline: none;
+}
+/* 決定ボタンホバー時 */
+.kettei:hover {
+  margin-left: 415px;
+  width: 100px;
+  height: 60px;
+  margin-top: 3px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 3px solid black;
+  outline: none;
+}
+/* スクロール開始ボタン */
+.scroll_start{
+  margin-top: 10px;
+  margin-left: 285px;
+  width: 110px;
+  height: 60px;
+  color:white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 5px solid black;
+  outline: none;
+}
+/* スクロール開始ボタンホバー時 */
+.scroll_start:hover{
+  margin-top: 10px;
+  margin-left: 285px;
+  width: 110px;
+  height: 60px;
+  color:white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 3px solid black;
+  outline: none;
+}
+/* スクロール停止ボタン */
+.scroll_stop{
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 110px;
+  height: 60px;
+  color:white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 5px solid black;
+  outline: none;
+}
+/* スクロール停止ボタンホバー時 */
+.scroll_stop:hover{
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 110px;
+  height: 60px;
+  color:white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-bottom: 3px solid black;
+  outline: none;
+}
+/* 決定ボタンを押す前だけ表示される要素 */
+#prepare{
+  margin-top: 150px;
+}
+/* 決定ボタンを押した後のみ表示される要素 */
+#play{
+  margin-top: 150px;
+}
+/* 黒枠内のエリア */
+#scroll_area{
+  background-color: rgba(256, 256, 256, 0.9);
+  height: 200px; 
+  width: 500px; 
+  border: 8px solid;
+  resize: none;
+  overflow:scroll; 
+}
+
