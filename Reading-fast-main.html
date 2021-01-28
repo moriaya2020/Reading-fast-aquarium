@@ -13,8 +13,8 @@
 <body>
   <div style="display: flex;">
     <i class="fas fa-undo passive"></i>
-    <i class="fas fa-volume-up active"></i>
-    <i class="fas fa-volume-mute passive"></i>
+    <i class="fas fa-volume-up passive"></i>
+    <i class="fas fa-volume-mute active"></i>
   </div>
   <!-- 決定ボタンを押した後だけ表示される -->
   <div id="play" class="passive">
@@ -78,11 +78,15 @@
   </div>
   <!-- ボタンを押した際の効果音 -->
   <audio id="btn_sound">
-    <source class="passive" src="btn.mp3" type="audio/mp3">
+    <source class="passive" src="sound/btn.mp3" type="audio/mp3">
   </audio>
   <!-- 魚が死ぬ時の効果音 -->
   <audio id="fish_die_sound">
-    <source class="passive" src="fish_die_sound.mp3" type="audio/mp3">
+    <source class="passive" src="sound/fish_die_sound.mp3" type="audio/mp3">
+  </audio>
+  <!-- 海の効果音 -->
+  <audio id="sea_sound">
+    <source class="passive" src="sound/sea_sound.mp3" type="audio/mp3">
   </audio>
   <!-- jsファイル読み込み -->
   <script src="https://kit.fontawesome.com/8ed55bcd0d.js" crossorigin="anonymous"></script>
