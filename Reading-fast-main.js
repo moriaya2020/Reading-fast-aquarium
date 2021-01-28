@@ -1,3 +1,5 @@
+var fa_volume_up = document.querySelector(".fa-volume-up"); //ミュート解除中のボタン
+var fa_volume_mute = document.querySelector(".fa-volume-mute");　//ミュート中のボタン
 var resource = document.getElementById("resource"); //入力欄の要素
 var y = 0; //黒枠内におけるスクロール位置
 var level = 0;　//難易度
@@ -6,6 +8,9 @@ var height = 100; //波の高さ(単位は%)
 var margin_top = 0; //波の上側のマージン(画面の上端からの距離,単位は%)
 var scroll_stop_boolean = false; //スクロール停止中か否か(スクロール停止中：true)
 var fish_die_sound = document.getElementById("fish_die_sound"); //魚が死んだ時の効果音
+var btn_sound = document.getElementById("btn_sound"); //ボタンが押された時の効果音
+var botan = document.querySelectorAll(".botan"); //ボタン
+var fa_undo = document.querySelector(".fa-undo"); //やり直しボタン
 var fish_1_die = false; //[初期の段階で1番上にいる魚]は死んだか否か(死んだ：true)
 var fish_2_die = false; //[初期の段階で上から2番目にいる魚]は死んだか否か(死んだ：true)
 var fish_3_die = false; //[初期の段階で上から3番目にいる魚]は死んだか否か(死んだ：true)
@@ -15,6 +20,30 @@ var fish_6_die = false; //[初期の段階で上から6番目にいる魚]は死
 var fish_1_2_die = false; //[初期の段階で上から7番目にいる魚]は死んだか否か(死んだ：true)
 var fish_4_2_die = false; //[初期の段階で上から8番目にいる魚]は死んだか否か(死んだ：true)
 var fish_2_2_die = false; //[初期の段階で上から9番目にいる魚]は死んだか否か(死んだ：true)
+
+//ミュートに切り替えるボタンを押した時
+fa_volume_up.addEventListener('click', function(){
+  //ミュートにする
+  fish_die_sound.muted = true;
+  btn_sound.muted = true;
+  //表示の切り替え(ミュート　⇄　ミュート解除)
+  $(".fa-volume-up").removeClass("active");
+  $(".fa-volume-up").addClass("passive");
+  $(".fa-volume-mute").removeClass("passive");
+  $(".fa-volume-mute").addClass("active");
+});
+
+//ミュート解除に切り替えるボタンを押した時
+fa_volume_mute.addEventListener('click', function(){
+  //ミュート解除
+  fish_die_sound.muted = false;
+  btn_sound.muted = false;
+  //表示の切り替え(ミュート　⇄　ミュート解除)
+  $(".fa-volume-up").removeClass("passive");
+  $(".fa-volume-up").addClass("active");
+  $(".fa-volume-mute").removeClass("active");
+  $(".fa-volume-mute").addClass("passive");
+});
 
 //[初期の段階で1番上にいる魚]の泳ぎ
 var fish_1 = gsap.timeline();
@@ -88,6 +117,29 @@ fish_2_2.to("#fish_2_2", 1, { rotationY: 180 })
   .to("#fish_2_2", 2, { x: 0 });
 fish_2_2.repeat(-1);
 
+// スクロール開始ボタンを押した時
+botan[0].addEventListener('click', function () {
+  btn_sound.currentTime = 0;
+  btn_sound.play();
+})
+
+// スクロール停止ボタンを押した時
+botan[1].addEventListener('click', function () {
+  btn_sound.currentTime = 0;
+  btn_sound.play();
+})
+
+// 決定ボタンを押した時
+botan[2].addEventListener('click', function () {
+  btn_sound.currentTime = 0;
+  btn_sound.play();
+})
+
+//やり直しボタンを押した時
+fa_undo.addEventListener('click', function(){
+  location.reload();
+})
+
 /**
  * 決定ボタンを押した際に発火する関数
  */
@@ -99,6 +151,9 @@ function kettei() {
   $("#prepare").addClass("passive");
   $("#play").removeClass("passive");
   $("#play").addClass("active");
+  //表示の切り替え(一時停止ボタンの表示)
+  $(".fa-undo").removeClass("passive");
+  $(".fa-undo").addClass("active");
   //選択されたレベルを取得
   var levels = document.getElementsByName("level");
   for (var i = 0; i < 6; i++) {
@@ -137,7 +192,7 @@ function Reducing_water() {
   height = 100 - margin_top;
   $("svg").css("margin-top", margin_top + "%");
   $("svg").css("height", height + "%");
-  
+
   //波の上側マージンが90%なら
   if (margin_top > 90) {
     //[初期の段階で上から9番目にいる魚]が死ぬ
@@ -145,6 +200,7 @@ function Reducing_water() {
     fish_2_2.to("#fish_2_2", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_2_2_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_2_2_die = true;
@@ -158,6 +214,7 @@ function Reducing_water() {
     fish_4_2.to("#fish_4_2", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_4_2_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_4_2_die = true;
@@ -171,6 +228,7 @@ function Reducing_water() {
     fish_1_2.to("#fish_1_2", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_1_2_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_1_2_die = true;
@@ -184,6 +242,7 @@ function Reducing_water() {
     fish_6.to("#fish_6", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_6_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_6_die = true;
@@ -197,6 +256,7 @@ function Reducing_water() {
     fish_5.to("#fish_5", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_5_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_5_die = true;
@@ -210,6 +270,7 @@ function Reducing_water() {
     fish_4.to("#fish_4", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_4_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_4_die = true;
@@ -223,6 +284,7 @@ function Reducing_water() {
     fish_3.to("#fish_3", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_3_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_3_die = true;
@@ -236,6 +298,7 @@ function Reducing_water() {
     fish_2.to("#fish_2", 1, {
       autoAlpha: 0, rotationX: 90, onUpdate: function () {
         if (fish_2_die == false) {
+          fish_die_sound.currentTime = 0;
           fish_die_sound.play();
         }
         fish_2_die = true;
