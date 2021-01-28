@@ -11,6 +11,11 @@
 </head>
 
 <body>
+  <div style="display: flex;">
+    <i class="fas fa-undo passive"></i>
+    <i class="fas fa-volume-up active"></i>
+    <i class="fas fa-volume-mute passive"></i>
+  </div>
   <!-- 決定ボタンを押した後だけ表示される -->
   <div id="play" class="passive">
     <h1 class="phrase">〜早く読んで、魚を救いましょう！〜</h1>
@@ -26,9 +31,9 @@
     </div>
     <div style="display: flex;">
       <!-- スクロール開始ボタン -->
-      <input class="scroll_start" type="button" value="スクロール開始" onClick="scrollPage()">
+      <input class="scroll_start botan" type="button" value="スクロール開始" onClick="scrollPage()">
       <!-- スクロール停止ボタン -->
-      <input class="scroll_stop" type="button" value="スクロール停止" onClick="scrollSTOP()">
+      <input class="scroll_stop botan" type="button" value="スクロール停止" onClick="scrollSTOP()">
     </div>
   </div>
   <!-- 決定ボタンを押す前だけ表示される -->
@@ -46,7 +51,7 @@
     <textarea name="resource" id="resource" cols="100" rows="10" style="font-size: 30px;"></textarea>
     <br>
     <!-- 決定ボタン -->
-    <input class="kettei" type="button" value="決定！" onClick="kettei()">
+    <input class="kettei botan" type="button" value="決定！" onClick="kettei()">
   </div>
   <!-- 波 -->
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -71,11 +76,16 @@
   <!-- 初期の段階で上から9番目にいる魚 -->
   <img id="fish_2_2" src="fish/fish_2.png">
   </div>
+  <!-- ボタンを押した際の効果音 -->
+  <audio id="btn_sound">
+    <source class="passive" src="btn.mp3" type="audio/mp3">
+  </audio>
   <!-- 魚が死ぬ時の効果音 -->
   <audio id="fish_die_sound">
     <source class="passive" src="fish_die_sound.mp3" type="audio/mp3">
   </audio>
   <!-- jsファイル読み込み -->
+  <script src="https://kit.fontawesome.com/8ed55bcd0d.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>

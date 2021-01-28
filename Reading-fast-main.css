@@ -1,3 +1,20 @@
+/* Font Awesomeアイコン */
+.fas{
+  font-size: 50px;
+}
+
+/* Font Awesomeアイコン(戻るボタン) */
+.fa-undo{
+  position: absolute;
+  left: 20px;
+} 
+
+/* Font Awesomeアイコン(ミュート切り替えボタン)*/
+.fa-volume-up,.fa-volume-mute{
+  position: absolute;
+  left: 90%;
+}
+
 /* 初期の段階で1番上にいる魚 */
 #fish_1 {
   position: absolute;
@@ -92,11 +109,11 @@ svg {
 }
 /* 表示をオンにするクラス */
 .active{
-  display: block;
+  display: block !important; 
 }
 /* 表示をオフにするクラス */
 .passive{
-  display: none;
+  display: none !important;
 }
 /* タイトルと注の表示 */
 .phrase {
@@ -193,4 +210,3 @@ svg {
   resize: none;
   overflow:scroll; 
 }
-
