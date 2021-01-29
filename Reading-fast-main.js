@@ -57,7 +57,9 @@ fa_volume_mute.addEventListener('click', function () {
   $(".fa-volume-up").addClass("active");
   $(".fa-volume-mute").removeClass("active");
   $(".fa-volume-mute").addClass("passive");
+  //海の音をループ再生
   sea_sound.play();
+  sea_sound.loop = true;
 });
 
 //[初期の段階で1番上にいる魚]の泳ぎ
