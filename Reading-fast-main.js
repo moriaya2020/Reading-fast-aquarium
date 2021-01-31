@@ -162,7 +162,7 @@ fa_undo.addEventListener('click', function () {
  */
 function kettei() {
   //ミュートにする
-  sea_sound.muted = true;
+  // sea_sound.muted = true;
   //入力されたテキストを読む文章に設定
   document.getElementById("text").innerText = resource.value;
   //表示の切り替え(レベル選択・文章入力画面　⇄　文章を読む画面)
@@ -221,6 +221,7 @@ function Reducing_water() {
         if (fish_2_2_die == false) {
           fish_die_sound.currentTime = 0;
           fish_die_sound.play();
+          sea_sound.muted = true;
         }
         fish_2_2_die = true;
       }
