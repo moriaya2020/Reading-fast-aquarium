@@ -2,6 +2,7 @@
 <img src="app_image.png">  
 
 ## 1. URL
+※推奨ブラウザはGoogle Chromです。<br>
 https://moriaya2020.github.io/Reading-fast-aquarium/Reading-fast-main.html
 
 ## 2. 目的
